@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
     user : 'b7314608720d5c',
     password : '6d254bae',
     database : 'heroku_a3a7dead617660e'
-})
+});
 
 // connection.connect();
 
@@ -21,23 +21,23 @@ const connection = mysql.createConnection({
 
 app.get('/', (req, res) => {
     res.send('Hello Wold!');
-})
+});
 
 app.get('/login', (req, res) => {
     res.send('login page');
-})
+});
 
 app.get('/signup', (req, res) => {
     res.send('signup page');
-})
+});
 
 app.get('/todolist', (req, res) => {
     res.send('todolis page');
-})
+});
 
 var id = 'id1';
 var pw = 'pw1';
-app.get('/dbtest', (req,res) => {
+app.get('/dbtest', (req, res) => {
     connection.query(`select title from list where id='${id}'`, (error, result) => {
         if (error) throw error;
         for(let i = 0; i < Object.keys(result).length; i++){
@@ -48,6 +48,17 @@ app.get('/dbtest', (req,res) => {
     });
 });
 
+app.get('/logintest', (req, res) => {
+    connection.query(`select pw from user where id = '${id}'`, (error, result) => {
+        if (error) throw error;
+        if (pw == result[0].pw){
+            console.log('로그인 성공');
+        }else{
+            console.log('로그인 실패');
+        }
+    });
+});
+
 app.listen(port, () =>{
     console.log(`Example app listening on port ${port}`)
-})
+});
