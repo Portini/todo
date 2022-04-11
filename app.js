@@ -10,12 +10,14 @@ const connection = mysql.createConnection({
     database : 'heroku_a3a7dead617660e'
 })
 
-connection.connect();
+// connection.connect();
 
-connection.query('select * from list', function(error, result) {
-    if (error) throw error;
-    console.log(result);
-})
+// connection.query('select * from list', (error, result) => {
+//     if (error) throw error;
+//     console.log(result);
+// })
+
+// connection.end();
 
 app.get('/', (req, res) => {
     res.send('Hello Wold!');
@@ -32,6 +34,19 @@ app.get('/signup', (req, res) => {
 app.get('/todolist', (req, res) => {
     res.send('todolis page');
 })
+
+var id = 'id1';
+var pw = 'pw1';
+app.get('/dbtest', (req,res) => {
+    connection.query(`select title from list where id='${id}'`, (error, result) => {
+        if (error) throw error;
+        for(let i = 0; i < Object.keys(result).length; i++){
+            console.log(i+1, result[i].title);
+            // res.send(i+1, result[i].title);
+        }
+        res.send(result);
+    });
+});
 
 app.listen(port, () =>{
     console.log(`Example app listening on port ${port}`)
