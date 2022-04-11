@@ -4,10 +4,10 @@ const port = 3000;
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    password : '123456',
-    database : 'todo'
+    host : 'us-cdbr-east-05.cleardb.net',
+    user : 'b7314608720d5c',
+    password : '6d254bae',
+    database : 'heroku_a3a7dead617660e'
 })
 
 connection.connect();
