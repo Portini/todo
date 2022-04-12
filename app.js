@@ -24,15 +24,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.send('login page');
+    res.sendFile(__dirname + '/login.html');
 });
 
 app.get('/signup', (req, res) => {
-    res.send('signup page');
+    res.sendFile(__dirname + '/signup.html');
 });
 
 app.get('/todolist', (req, res) => {
-    res.send('todolis page');
+    res.sendFile(__dirname + '/todolist.html');
 });
 
 var id = 'id1';
@@ -53,12 +53,13 @@ app.get('/logintest', (req, res) => {
         if (error) throw error;
         if (pw == result[0].pw){
             console.log('로그인 성공');
+            res.send('로그인 성공');
         }else{
             console.log('로그인 실패');
+            res.send('로그인 실패');
         }
     });
 });
-
 app.listen(port, () =>{
     console.log(`Example app listening on port ${port}`)
 });

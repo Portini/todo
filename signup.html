@@ -18,8 +18,18 @@
             <td><input type="password" id="pw"></td>
         </tr>
         <tr>
-            <td><button id="signup">회원가입</button></td>
+            <td><button id="signup" onclick="btnsignup()">회원가입</button></td>
         </tr>
     </table>
+    <script>
+        function btnsignup() {
+            // id값 pw값 db에 넣어주는 코드 필요
+            if(document.getElementById('id').value != '' && document.getElementById('pw').value != '') {
+                location.href = '/login';
+            }else{
+                alert('아이디와 비밀번호 확인');
+            }
+        }
+    </script>
 </body>
 </html>

@@ -18,9 +18,24 @@
             <td><input type="password" id="pw"></td>
         </tr>
         <tr>
-            <td><button id="login">로그인</button></td>
-            <td><button id="signup">회원가입</button></td>
+            <td><button id="login" onclick="btnlogin()">로그인</button></td>
+            <td><button id="signup" onclick="btnsignup()">회원가입</button></td>
         </tr>
     </table>
+    <script>
+        function btnlogin() {
+            var id = document.getElementById('id').value;
+            var pw = 'pw1'; // 임시 변수 db에서 id주고 pw받아오는 코드 필요
+            if(pw == document.getElementById('pw').value) {
+                alert('로그인 성공');
+                location.href = '/todolist';
+            }else{
+                alert('로그인 실패 아이디 비밀번호 확인 필요');
+            }
+        }
+        function btnsignup() {
+            location.href = '/signup';
+        }
+    </script>
 </body>
 </html>
